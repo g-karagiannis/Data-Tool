@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.streamlit/secrets.toml
+.claude/settings.local.json
+
+# Αρχεία του Claude (βοηθός ανάπτυξης): μένουν μόνο τοπικά, δεν δημοσιεύονται.
+CLAUDE.md
+.claude/
+
+# Ελληνικό README: μένει μόνο τοπικά (δημοσιεύεται μόνο το αγγλικό README.md).
+README.el.md

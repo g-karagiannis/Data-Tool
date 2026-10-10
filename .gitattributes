@@ -1,0 +1,2 @@
+# Test data is compared byte for byte with make_test_data.py output: keep LF endings.
+tests/data/*.csv text eol=lf

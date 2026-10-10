@@ -1,0 +1,108 @@
+/* Το st.toast() της Streamlit εμφανίζεται εξ ορισμού κάτω-δεξιά· το μετακινούμε
+   κάτω-αριστερά με CSS πάνω στο σταθερό data-testid, ώστε τα μηνύματα σφάλματος να
+   μην εμποδίζουν τη χρήση της εφαρμογής (μη-μπλοκαριστικά, αυτο-εξαφανιζόμενα). */
+div[data-testid="stToastContainer"] {
+    left: 1rem !important;
+    right: auto !important;
+    bottom: 1rem !important;
+    top: auto !important;
+}
+
+/* Σκούρο θέμα (Linear-style): τα βασικά χρώματα ορίζονται στο .streamlit/config.toml·
+   εδώ μόνο οι λεπτομέρειες που δεν καλύπτει το config — tracking, βάρη γραμματοσειράς,
+   hairline borders αντί για σκιές, κουμπιά ghost, tabs, expanders. */
+:root {
+    --void: #08090a; --carbon: #0f1011; --obsidian: #161718;
+    --graphite: #23252a; --smoke: #383b3f; --ash: #62666d; --fog: #8a8f98;
+    --mist: #d0d6e0; --paper: #ffffff; --lime: #e4f222;
+}
+html, body, .stApp {
+    background: var(--void);
+    font-feature-settings: "cv01" on, "ss03" on, "zero" on;
+}
+.stApp { color: var(--mist); letter-spacing: -0.010em; }
+
+/* Τίτλοι: λευκό, βάρος 510, σφιχτό tracking */
+h1, h2, h3, h4, h5, h6 { color: var(--paper) !important; font-weight: 510 !important; }
+h1 { font-size: 2.5rem !important; letter-spacing: -0.022em !important; line-height: 1.05 !important; }
+h2, h3 { letter-spacing: -0.012em !important; }
+strong, b { color: var(--paper); font-weight: 590; }
+[data-testid="stCaptionContainer"], .stCaption, small { color: var(--fog) !important; }
+
+/* Sidebar: carbon επιφάνεια, hairline διαχωριστικό */
+section[data-testid="stSidebar"] {
+    background: var(--carbon);
+    border-right: 1px solid var(--graphite);
+}
+section[data-testid="stSidebar"] h2 {
+    font-size: 0.8rem !important; text-transform: none;
+    color: var(--fog) !important; letter-spacing: 0 !important; font-weight: 510 !important;
+}
+
+/* Κουμπιά: ghost/outline (ουδέτερα) — το lime μόνο για primary */
+.stButton > button, .stDownloadButton > button, .stFormSubmitButton > button {
+    background: transparent;
+    border: 1px solid var(--graphite);
+    color: var(--mist);
+    font-weight: 400; font-size: 13px; letter-spacing: -0.010em;
+    box-shadow: none; transition: border-color .12s, background .12s;
+}
+.stButton > button:hover, .stDownloadButton > button:hover, .stFormSubmitButton > button:hover {
+    background: rgba(255,255,255,0.04);
+    border-color: var(--smoke);
+    color: var(--paper);
+}
+.stButton > button[kind="primary"], .stFormSubmitButton > button[kind="primary"],
+.stDownloadButton > button[kind="primary"] {
+    background: var(--lime); color: var(--void); border-color: var(--lime);
+    font-weight: 510; font-size: 14px; letter-spacing: -0.011em;
+}
+.stButton > button[kind="primary"]:hover { background: #eef55a; color: var(--void); }
+
+/* Inputs: σχεδόν διάφανη επιφάνεια, hairline border που φωτίζει στο focus */
+div[data-baseweb="input"], div[data-baseweb="select"] > div, div[data-baseweb="textarea"],
+.stNumberInput div[data-baseweb="input"] {
+    background: rgba(255,255,255,0.02) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+div[data-baseweb="input"]:focus-within, div[data-baseweb="select"] > div:focus-within,
+div[data-baseweb="textarea"]:focus-within {
+    border-color: var(--mist) !important;
+}
+
+/* Tabs: τυπογραφικά — ανενεργά σε fog, ενεργό λευκό με lime δείκτη (από primaryColor) */
+[data-testid="stTab"] { color: var(--fog) !important; }
+[data-testid="stTab"] p { font-size: 13px !important; }
+[data-testid="stTab"]:hover { color: var(--mist) !important; }
+[data-testid="stTab"][aria-selected="true"] { color: var(--paper) !important; }
+
+/* Expanders / containers με border: κάρτες carbon με inset hairline */
+[data-testid="stExpander"] details, [data-testid="stVerticalBlockBorderWrapper"] {
+    background: var(--carbon);
+    border: none !important;
+    box-shadow: rgb(35,37,42) 0 0 0 1px inset;
+    border-radius: 12px;
+}
+[data-testid="stExpander"] summary { color: var(--mist); font-size: 14px; }
+
+/* Dataframes / file uploader / alerts */
+[data-testid="stDataFrame"] { border: 1px solid var(--graphite); border-radius: 6px; }
+[data-testid="stFileUploaderDropzone"] {
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed var(--smoke);
+}
+/* Alerts: ουδέτερη επιφάνεια, γκρι κείμενο — το χρώμα μόνο σε λεπτή αριστερή γραμμή */
+[data-testid="stAlertContainer"] {
+    background: var(--obsidian) !important;
+    box-shadow: rgb(35,37,42) 0 0 0 1px inset;
+    border-left: 2px solid var(--fog);
+    color: var(--mist) !important;
+}
+[data-testid="stAlertContainer"] * { color: var(--mist) !important; }
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"])    { border-left-color: #02b8cc; }
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentSuccess"]) { border-left-color: #27a644; }
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentWarning"]) { border-left-color: #f2994a; }
+[data-testid="stAlertContainer"]:has([data-testid="stAlertContentError"])   { border-left-color: #eb5757; }
+[data-testid="stMetricValue"] { color: var(--paper); font-weight: 510; letter-spacing: -0.012em; }
+code { font-size: 0.85em; letter-spacing: -0.013em; }
+hr { border-color: var(--graphite) !important; }

@@ -1,0 +1,15 @@
+streamlit>=1.35
+pandas>=2.0
+numpy>=1.24
+openpyxl>=3.1
+xlrd>=2.0
+duckdb>=0.10
+pdfplumber>=0.10
+pypdfium2>=4.0
+plotly>=5.20
+pyaxis>=0.4.3
+scipy>=1.11
+arch>=6.3
+statsmodels>=0.15
+linearmodels>=7.0
+pyfixest>=0.60

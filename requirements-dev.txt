@@ -1,0 +1,8 @@
+# Test tools (not needed to run the app). Install with:
+#   .venv\Scripts\python -m pip install -r requirements-dev.txt
+-r requirements-lock.txt
+pytest==9.1.1
+colorama==0.4.6
+iniconfig==2.3.0
+pluggy==1.6.0
+Pygments==2.21.0

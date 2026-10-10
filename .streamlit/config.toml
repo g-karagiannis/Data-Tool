@@ -1,0 +1,35 @@
+# Θέμα εμφάνισης — σκούρο, "midnight precision instrument" (Linear-style).
+# Οι ρυθμίσεις εδώ καλύπτουν τα βασικά χρώματα/γραμματοσειρές· τα λεπτά
+# (hairline borders, tracking, κουμπιά) ρυθμίζονται με CSS στο styles/app.css.
+
+[server]
+# Η εφαρμογή ανοίγει μόνο από τον υπολογιστή όπου τρέχει (http://localhost:...).
+# Άλλες συσκευές στο ίδιο δίκτυο δεν μπορούν να συνδεθούν.
+address = "localhost"
+# Μέγιστο μέγεθος ανά αρχείο στο πλαίσιο ανεβάσματος (MB) — το όριο των .zip/.dat. Η
+# εφαρμογή ελέγχει επιπλέον 10MB ανά αρχείο για τους υπόλοιπους τύπους και 10MB συνολικά
+# στο «Φόρτωση» (modules/upload_plan.py).
+maxUploadSize = 200
+
+[theme]
+base = "dark"
+primaryColor = "#e4f222"
+backgroundColor = "#08090a"
+secondaryBackgroundColor = "#0f1011"
+textColor = "#d0d6e0"
+linkColor = "#d0d6e0"
+borderColor = "#23252a"
+dataframeBorderColor = "#23252a"
+showWidgetBorder = true
+baseRadius = "6px"
+buttonRadius = "6px"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap"
+headingFontWeights = [510, 510, 510, 510, 510, 510]
+baseFontSize = 15
+chartCategoricalColors = ["#02b8cc", "#8b5cf6", "#27a644", "#eb5757", "#6366f1", "#d0d6e0"]
+
+[theme.sidebar]
+backgroundColor = "#0f1011"
+secondaryBackgroundColor = "#161718"
+borderColor = "#23252a"
